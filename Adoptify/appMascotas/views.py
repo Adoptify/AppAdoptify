@@ -4,12 +4,15 @@ from appMascotas import models
 # Create your views here.
 
 def publicacion(request):
- #   publicacion = Publicacion.objects.all()
+    publicaciones = Publicacion.objects.all()
     return render(request,
-                  'index.html')
+                  'index.html', {'publicaciones': publicaciones})
     #              {'cuentas': cuentas,
     #               'total': total}
                    
+
+				   
+				   
 
 
 

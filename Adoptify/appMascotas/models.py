@@ -11,7 +11,7 @@ class Localidad(models.Model):
 class Edad(models.Model):
     edad = models.DecimalField(decimal_places=0, max_digits=3)
     def __str__(self):
-        return self.edad
+        return "{}".format(self.edad)
 
 #clase para clasificar el sexo de los animales
 class Sexo(models.Model):
@@ -34,7 +34,6 @@ class Especie(models.Model):
 class Publicacion(models.Model):
     fecha = models.DateTimeField(auto_now=True)
     descripcion= models.CharField(max_length=300,default='')
-    nombre = models.CharField(max_length=200)
     # foto
     telefono = models.DecimalField(max_digits=15,decimal_places=0)
     localidad = models.ForeignKey(Localidad, default=1, on_delete=models.PROTECT)
@@ -43,6 +42,6 @@ class Publicacion(models.Model):
     raza = models.ForeignKey(Raza, default=1, on_delete=models.PROTECT)
     sexo = models.ForeignKey(Sexo, default=1, on_delete=models.PROTECT)
     def __str__(self):
-        return "Fecha:{} Descripcion:{} Nombre:{} Telefono:{}".format(self.fecha,self.descripcion,self.nombre, self.telefono)
+        return "Fecha:{} Descripcion:{} Telefono:{} Localidad: {} Edad:{} Especie: {} Raza:{} Sexo: {}".format(self.fecha,self.descripcion, self.telefono, self.localidad, self.edad, self.especie, self.raza, self.sexo)
 
         
