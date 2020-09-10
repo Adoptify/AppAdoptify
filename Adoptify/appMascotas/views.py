@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from appMascotas import models
+from appMascotas.models import Publicacion
 
 # Create your views here.
 
@@ -9,10 +9,3 @@ def publicacion(request):
                   'index.html', {'publicaciones': publicaciones})
     #              {'cuentas': cuentas,
     #               'total': total}
-                   
-
-				   
-				   
-
-
-
