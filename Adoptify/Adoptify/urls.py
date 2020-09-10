@@ -19,5 +19,6 @@ from appMascotas import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index,name="index"),
-    path('crear/', views.crear)
+    path('crear/', views.crear),
+    path('<int:id>/', views.publicacion)
 ]

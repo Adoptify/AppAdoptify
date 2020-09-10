@@ -20,3 +20,14 @@ def crear(request):
     else:
         form=PublicacionForm()
         return render(request,'nuevPu.html',{'form':form})
+
+
+def publicacion(request, id):
+    try:
+        publicacion = Publicacion.objects.get(pk=id)
+    except Publicacion.DoesNotExist:
+        raise Http404("La cuenta no existe")
+
+    return render(request,
+                  'publicacion.html',
+                  {'publicacion': publicacion})
