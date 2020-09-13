@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>nueva Publicacion</h1>
-    <form action="/crear/" method="POST">
+    <form action="/crear/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="publicar"/>
