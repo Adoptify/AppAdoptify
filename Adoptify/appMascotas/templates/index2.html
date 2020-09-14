@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+<ul>
+  {% for p in publicaciones %}
+  <li>
+    <p>{{p.fecha}}</p>
+    <p>{{p.descripcion}}</p>
+    <p>{{p.telefono}}</p>
+    <p>{{p.localidad}}</p>
+    <p>{{p.edad}}</p>
+    <p>{{p.especie}}</p>
+    <img  src="{{p.foto.url}}"/>
+  </li>
+  {% endfor %}
+</ul>
+</body>
+</html>
