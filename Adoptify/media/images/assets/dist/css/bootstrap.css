@@ -6767,9 +6767,9 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-/* background-color: violet;*/
-	background-image: url(./nombreimagen.svg);
-	background-clip: content-box;
+/*background-color: black;*/
+	background-image: url(../../../patitafinalfinalfinal.png);
+	background-clip: content-box; background-size: 12.3rem; 
 }
 
 a.bg-light:hover, a.bg-light:focus,
