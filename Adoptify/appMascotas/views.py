@@ -4,8 +4,11 @@ from appMascotas.forms import *
 # Create your views here.
 
 
-def index(request):
-    publicaciones = Publicacion.objects.all()
+def index(request, pubsFiltradas=None):
+    if pubsFiltradas != None:
+        publicaciones = pubsFiltradas
+    else:
+        publicaciones = Publicacion.objects.all()
     return render(request,
                   'index.html', {'publicaciones': publicaciones})
 
@@ -30,3 +33,18 @@ def publicacion(request, id):
     return render(request,
                   'publicacion.html',
                   {'publicacion': publicacion})
+
+
+def filtrarPublicacion(request):
+    if request.method == 'POST':
+        form = FiltrarPublicacion(request.POST)
+        if form.is_valid():
+            localidad = form.cleaned_data['localidad']
+            edad = form.cleaned_data['edad']
+            raza = form.cleaned_data['raza']
+            sexo = form.cleaned_data['sexo']
+            especie = form.cleaned_data['especie']
+            return index(request, Publicacion.filtrar(localidad, edad, especie, raza, sexo))
+    else:
+        form = FiltrarPublicacion()
+        return render(request, 'filtro.html', {'form': form})

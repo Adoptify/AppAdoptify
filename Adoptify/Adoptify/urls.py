@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
     path('crear/', views.crear),
-    path('<int:id>/', views.publicacion)
+    path('<int:id>/', views.publicacion),
+    path('filtrar', views.filtrarPublicacion)
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)

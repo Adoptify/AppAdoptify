@@ -61,3 +61,19 @@ class Publicacion(models.Model):
 
     def __str__(self):
         return "Fecha:{} Descripcion:{} Telefono:{} Localidad: {} Edad:{} Especie: {} Raza:{} Sexo: {}".format(self.fecha, self.descripcion, self.telefono, self.localidad, self.edad, self.especie, self.raza, self.sexo)
+
+    @staticmethod
+    def filtrar(localidad, edad, especie, raza, sexo):
+        pubs = Publicacion.objects.all()
+        if localidad:
+            pubs = pubs.filter(localidad__id=int(localidad))
+        if edad:
+            pubs = pubs.filter(edad__id=int(edad))
+        if especie:
+            pubs = pubs.filter(especie__id=int(especie))
+        if raza:
+            pubs = pubs.filter(raza__id=int(raza))
+        if sexo:
+            pubs = pubs.filter(sexo__id=int(sexo))
+
+        return pubs
