@@ -6,7 +6,18 @@
 }
 
 body, html{
-  height: 100%;
+  height: 100vh;
+  
+}
+
+.wrapper {
+  min-height: calc(100% - 1rem);
+}
+
+.piedepagina {
+  
+  background-color: red
+  
 }
 
 .barrasuperior{

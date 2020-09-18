@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Publicacion</title>
-</head>
-<body>
+{% extends "base.html" %}
+  
+
+{% block content %}
+
     <h1>nueva Publicacion</h1>
     <form action="/crear/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form}}
+        {{form.as_p}}
         <input type="submit" value="publicar"/>
     </form>
-</body>
-</html>
+{%endblock%}
