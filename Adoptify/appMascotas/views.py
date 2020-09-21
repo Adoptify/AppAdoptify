@@ -8,7 +8,7 @@ def index(request, pubsFiltradas=None):
     if pubsFiltradas != None:
         publicaciones = pubsFiltradas
     else:
-        publicaciones = Publicacion.objects.all()
+        publicaciones = Publicacion.objects.filter(report__lt=3)
     return render(request,
                   'index.html', {'publicaciones': publicaciones})
 
