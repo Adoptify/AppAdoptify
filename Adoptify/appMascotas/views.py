@@ -48,3 +48,13 @@ def filtrarPublicacion(request):
     else:
         form = FiltrarPublicacion()
         return render(request, 'filtro.html', {'form': form})
+
+def reportar(request,pk):
+    
+    if request.method== 'POST':
+        p=Publicacion.objects.get(id=pk)
+        p.report= p.report+1
+        p.save()
+        return redirect(f'/{p.id}')
+
+

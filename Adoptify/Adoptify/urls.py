@@ -24,6 +24,8 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('crear/', views.crear),
     path('<int:id>/', views.publicacion),
-    path('filtrar', views.filtrarPublicacion)
+    path('filtrar', views.filtrarPublicacion),
+    path('reportar/<int:pk>',views.reportar, name='reportar')
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)
+
