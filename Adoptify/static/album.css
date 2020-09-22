@@ -29,8 +29,10 @@ body, html{
 }
 
 .contenedor_publicaciones{
-  background-image: url(../media/images/patitafinalfinalfinal.png);
+/*background-image: url(../media/images/patitafinalfinalfinal.png);*/
+background-color: #D2F6C5;
 }
+.imagen{ height: 225px }
 
 .piedepagina {
   background-color: #28df99;
