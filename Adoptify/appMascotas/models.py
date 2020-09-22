@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+from datetime import timedelta
 
 # Create your models here.
 # clase para guardar las diferentes localidades
@@ -59,6 +61,7 @@ class Publicacion(models.Model):
     raza = models.ForeignKey(Raza, default=1, on_delete=models.PROTECT)
     sexo = models.ForeignKey(Sexo, default=1, on_delete=models.PROTECT)
     report = models.DecimalField(max_digits=1, decimal_places=0, default=0)
+    fechavence = models.DateField(default=datetime.now().date() + timedelta(days = 7))
 
     def __str__(self):
         return "Fecha:{} Descripcion:{} Telefono:{} Localidad: {} Edad:{} Especie: {} Raza:{} Sexo: {}".format(self.fecha, self.descripcion, self.telefono, self.localidad, self.edad, self.especie, self.raza, self.sexo)

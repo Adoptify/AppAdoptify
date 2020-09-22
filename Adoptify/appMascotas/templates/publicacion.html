@@ -3,18 +3,24 @@
   
 
 {% block content %}
+{%load static%}
 <div class="row mb-2">
     <div class="col-md-2">  </div>
     <div class="col-md-8">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
         <div class="col-auto col-cm-12 col-md-6">
-            <img src="{{publicacion.foto.url}}" alt="">
+            
+            {% if publicacion.foto.url == "SOME STRING" %}
+              <img src="{{publicacion.foto.url}}" alt="">
+              {% else %}
+              <img src="{% static 'nofoto.png' %}"/>
+              {% endif %}
           </div>
         <div class="col p-4 d-flex flex-column position-static">
         
          <div class="mb-1 text-muted">{{publicacion.fecha}}</div>
           <p class="card-text mb-auto">{{publicacion.descripcion}} </p>
-          <form action="/reportar/{{ publicacion.id }}" method="POST">
+          <form action="{% url 'reportar' publicacion.id %}" method="POST">
             {% csrf_token %}
         <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
         </form>

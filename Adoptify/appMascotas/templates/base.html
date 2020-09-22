@@ -25,12 +25,34 @@
     
 
     <nav class="navbar centenedor_barrasup">
-    <div class="container">
-      <a class="navbar-brand" href="#">Adoptify</a>
-      
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Adoptify</a>
+        <ul>
+          <li>
+            <a href="{% url 'crear' %}"><button class="navbar-toggler" type="button">+</button></a>
+          </li>
+          {% if form %}
+          <li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              filtro
+            </button>
+          </li>
+          {% endif %}
+        </ul>
+        
+        
+        
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <form method="POST" action="{% url 'filtrar' %}">
+              {% csrf_token %}
+              {{form.as_p}}
+              <input type="submit" value="Filtrar">
+            </form>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
 
 

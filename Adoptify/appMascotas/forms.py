@@ -15,7 +15,7 @@ class FiltrarPublicacion(Form):
     # representan a cada objeto de la tabla que estoy trayendo, por ultimo
     # tomo ambas listas, las fusiono y convierto en una tupla
     localidad = ChoiceField(label='Localidad:', choices=tuple(
-        [(None, 'Seleccione')] + [(l.id, l.nombre) for l in Localidad.objects.all()]), required=False, initial='')
+        [(None, 'Seleccione')] + [(l.id, l.nombre) for l in Localidad.objects.all()]), required=False)
     edad = ChoiceField(label='Edad:', choices=tuple(
         [(None, 'Seleccione')] + [(e.id, e.edad) for e in Edad.objects.all()]), required=False)
     sexo = ChoiceField(label='Sexo:', choices=tuple(

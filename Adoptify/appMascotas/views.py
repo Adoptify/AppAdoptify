@@ -1,16 +1,25 @@
 from django.shortcuts import render, redirect
 from appMascotas.models import Publicacion
 from appMascotas.forms import *
+from django.db.models import Q
+from datetime import datetime
 # Create your views here.
 
 
 def index(request, pubsFiltradas=None):
+    form = FiltrarPublicacion()
     if pubsFiltradas != None:
-        publicaciones = pubsFiltradas
+        print(pubsFiltradas)
+        filtro = pubsFiltradas
     else:
-        publicaciones = Publicacion.objects.filter(report__lt=3)
+        filtro = Publicacion.objects.all()  
+    Q1 = Q(report__lt=3)
+    Q2 = Q(fechavence__gt=datetime.now())
+    publicaciones = filtro.filter(Q1 and Q2)
+    
+
     return render(request,
-                  'index.html', {'publicaciones': publicaciones})
+                  'index.html', {'publicaciones': publicaciones, 'form': form})
 
 
 def crear(request):
@@ -21,7 +30,7 @@ def crear(request):
             return redirect("index")
     else:
         form = PublicacionForm()
-        return render(request, 'nuevPu.html', {'form': form})
+        return render(request, 'nuevPu.html', {'dataentri': form})
 
 
 def publicacion(request, id):
@@ -45,9 +54,6 @@ def filtrarPublicacion(request):
             sexo = form.cleaned_data['sexo']
             especie = form.cleaned_data['especie']
             return index(request, Publicacion.filtrar(localidad, edad, especie, raza, sexo))
-    else:
-        form = FiltrarPublicacion()
-        return render(request, 'filtro.html', {'form': form})
 
 def reportar(request,pk):
     
