@@ -3,6 +3,7 @@ from appMascotas.models import Publicacion
 from appMascotas.forms import *
 from django.db.models import Q
 from datetime import datetime
+from django.core.paginator import Paginator
 # Create your views here.
 
 
@@ -15,9 +16,10 @@ def index(request, pubsFiltradas=None):
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
     publicaciones = filtro.filter(Q1 & Q2)
-
-    return render(request,
-                  'index.html', {'publicaciones': publicaciones, 'form': form})
+    paginator = Paginator(publicaciones, 9)
+    page = request.GET.get('page')
+    publicaciones = paginator.get_page(page)
+    return render(request,'index.html', {'publicaciones': publicaciones, 'form': form})
 
 
 def crear(request):

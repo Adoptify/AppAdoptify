@@ -52,10 +52,10 @@ class Especie(models.Model):
 class Publicacion(models.Model):
     fecha = models.DateTimeField(auto_now=True)
     descripcion = models.CharField(max_length=300, default='')
-    foto = models.ImageField(upload_to='images/', default='SOME STRING')
+    foto = models.ImageField(upload_to='images/')
     telefono = models.DecimalField(max_digits=15, decimal_places=0)
     localidad = models.ForeignKey(
-        Localidad, default=1, on_delete=models.PROTECT)
+    Localidad, default=1, on_delete=models.PROTECT)
     edad = models.ForeignKey(Edad, default=1, on_delete=models.PROTECT)
     especie = models.ForeignKey(Especie, default=1, on_delete=models.PROTECT)
     raza = models.ForeignKey(Raza, default=1, on_delete=models.PROTECT)

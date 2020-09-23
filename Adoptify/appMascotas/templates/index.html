@@ -11,12 +11,8 @@
         {% for p in publicaciones %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <a href="{{p.id}}">
-              {% if p.foto.url == "/media/SOME%20STRING" %}
-              <img class="imagen" src="{% static 'nofoto.png' %}"/>
-              {% else %}              
+            <a href="{{p.id}}">  
               <img class="imagen" src="{{p.foto.url}}"/>
-              {% endif %}
             </a> 
             <div class="card-body">
               <p>{{p.descripcion}}</p>
@@ -37,6 +33,17 @@
           <img src="{% static 'ptriste.jpg' %}" width="500px" height="500px" >
         {% endif %}
         </div>
+          {% if publicaciones.has_previous %}
+          <a href="?page={{ publicaciones.previous_page_number }}">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Anterior</button>
+          </a>
+          {% endif %}
+          {% if publicaciones.has_next %}
+          <a href="?page={{ publicaciones.next_page_number }}">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Siguiente</button>
+          </a>
+          {% endif %}
+         
       </div>
     </div>
   </div>
