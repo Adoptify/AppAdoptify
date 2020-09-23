@@ -10,6 +10,12 @@ body, html{
   
 }
 
+.hembra{
+  color: pink;
+}
+.macho{
+  color: lightblue;
+}
 .wrapper {
   min-height: calc(100% - 1rem);
 }

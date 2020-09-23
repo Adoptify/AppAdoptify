@@ -15,7 +15,7 @@
               <img class="imagen" src="{{p.foto.url}}"/>
             </a> 
             <div class="card-body">
-              <p>{{p.descripcion}}</p>
+              <p>{{p.descripcion| truncatechars:20}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="{{p.id}}">

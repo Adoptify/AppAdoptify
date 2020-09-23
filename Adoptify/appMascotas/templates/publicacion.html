@@ -13,8 +13,21 @@
           </div>
         <div class="col p-4 d-flex flex-column position-static">
         
-         <div class="mb-1 text-muted">{{publicacion.fecha}}</div>
-          <p class="card-text mb-auto">{{publicacion.descripcion}} </p>
+          <ul class="list-group list-group-flush">
+          <p>{{publicacion.fecha}}</p>
+          <p>{{publicacion.descripcion}}</p>
+            <p class="text-primary">{{publicacion.localidad}}</p>
+            <p>Edad: {{publicacion.edad}}</p>
+            <p>{{publicacion.especie}}</p>
+            {% if publicacion.sexo > 1 %}
+              <p class="macho" style="color: blue">Sexo: {{publicacion.sexo}}</p>
+            {%else%}
+              <p class="hembra" style="color: pink">Sexo: {{publicacion.sexo}}</p>
+            {% endif %}
+            <p>{{publicacion.raza}}</p>
+            <p><a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!
+              ">contactar</a></p>
+          </ul>
           <form action="{% url 'reportar' publicacion.id %}" method="POST">
             {% csrf_token %}
         <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
