@@ -9,14 +9,12 @@ from datetime import datetime
 def index(request, pubsFiltradas=None):
     form = FiltrarPublicacion()
     if pubsFiltradas != None:
-        print(pubsFiltradas)
         filtro = pubsFiltradas
     else:
-        filtro = Publicacion.objects.all()  
+        filtro = Publicacion.objects.all()
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
-    publicaciones = filtro.filter(Q1 and Q2)
-    
+    publicaciones = filtro.filter(Q1 & Q2)
 
     return render(request,
                   'index.html', {'publicaciones': publicaciones, 'form': form})
@@ -55,12 +53,11 @@ def filtrarPublicacion(request):
             especie = form.cleaned_data['especie']
             return index(request, Publicacion.filtrar(localidad, edad, especie, raza, sexo))
 
-def reportar(request,pk):
-    
-    if request.method== 'POST':
-        p=Publicacion.objects.get(id=pk)
-        p.report= p.report+1
+
+def reportar(request, pk):
+
+    if request.method == 'POST':
+        p = Publicacion.objects.get(id=pk)
+        p.report = p.report+1
         p.save()
         return redirect(f'/{p.id}')
-
-
