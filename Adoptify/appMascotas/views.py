@@ -16,10 +16,10 @@ def index(request, pubsFiltradas=None):
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
     publicaciones = filtro.filter(Q1 & Q2)
-    paginator = Paginator(publicaciones, 9)
+    paginator = Paginator(publicaciones, 3)
     page = request.GET.get('page')
     publicaciones = paginator.get_page(page)
-    return render(request,'index.html', {'publicaciones': publicaciones, 'form': form})
+    return render(request, 'index2.html', {'publicaciones': publicaciones, 'form': form})
 
 
 def crear(request):

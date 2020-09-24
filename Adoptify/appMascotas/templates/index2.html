@@ -1,0 +1,47 @@
+{% extends "base2.html" %}
+{% block title %}Bienvenido a Adoptify{% endblock %}
+{% block content %}
+  <main role="main">
+    <div class="album py-5 bg-lightgreen-adp">
+      <div class="container">
+        <div class="row">
+          {% for publicacion in publicaciones %}
+            <div class="col-md-6 col-lg-4">
+              <div class="card mb-4 shadow-sm">
+                <img src="{{publicacion.foto.url}}" width="100%" height="225" alt="{{publicacion.descripcion|truncatechars:15}}">
+                <div class="card-body">
+                  <p class="card-text">{{publicacion.descripcion|truncatechars:28}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'publicacion' publicacion.id %}" class="btn btn-sm btn-outline-secondary">Ver Mas</a>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Reportar</button>
+                    </div>
+                    {% load humanize %}
+                    <small class="text-muted">{{publicacion.fecha|naturaltime}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <ul class="list-group list-group-horizontal mt-2">
+          {% if publicaciones.has_previous %}
+          <li class="list-group-item shadow-sm">
+            <a href="?page={{ publicaciones.previous_page_number }}">
+              Anterior
+            </a>
+          </li>
+          {% endif %}
+          {% if publicaciones.has_next %}
+          <li class="list-group-item shadow-sm">
+            <a href="?page={{ publicaciones.next_page_number }}">
+              Siguiente
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+        
+      </div>
+    </div>
+  </main>
+{% endblock %}
