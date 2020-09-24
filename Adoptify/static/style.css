@@ -48,6 +48,14 @@ footer p {
 .bg-none {
 	background-color: #28df99;
 }
+.bg-dark-adp {
+	background-color: #17b87a;
+	border-color: #0f9260;
+}
+.bg-dark-adp:hover {
+	border-color: #0f9260;
+	background-color: #0f9260;
+}
 .color-dark {
 	fill: #343a40;
 	cursor: pointer;
