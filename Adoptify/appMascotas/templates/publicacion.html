@@ -26,7 +26,7 @@
             {% endif %}
             <p>{{publicacion.raza}}</p>
             <p><a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!
-              ">contactar</a></p>
+              "><i class="fa fa-whatsapp whatsapp-icon" aria-hidden="true"></i> Contactar</a></p>
           </ul>
           <form action="{% url 'reportar' publicacion.id %}" method="POST">
             {% csrf_token %}
