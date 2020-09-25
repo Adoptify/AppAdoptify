@@ -6,8 +6,17 @@ from appMascotas.models import *
 class PublicacionForm(ModelForm):
     class Meta:
         model = Publicacion
-        fields = ['descripcion', 'telefono', 'localidad',
-                  'especie', 'raza', 'edad', 'sexo', 'foto']
+        fields = ['telefono', 'localidad',
+                  'especie', 'raza', 'edad', 'sexo', 'descripcion', 'foto']
+        widgets = {
+            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'id': 'descripcion'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
+            'localidad': forms.Select(attrs={'class': 'form-control'}),
+            'especie': forms.Select(attrs={'class': 'form-control'}),
+            'raza': forms.Select(attrs={'class': 'form-control'}),
+            'edad': forms.Select(attrs={'class': 'form-control'}),
+            'sexo': forms.Select(attrs={'class': 'form-control'})
+        }
 
 
 class FiltrarPublicacion(Form):

@@ -30,7 +30,7 @@ def crear(request):
             return redirect("index")
     else:
         form = PublicacionForm()
-        return render(request, 'nuevPu.html', {'dataentri': form})
+        return render(request, 'nuevPu.html', {'form': form})
 
 
 def publicacion(request, id):
