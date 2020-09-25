@@ -1,6 +1,6 @@
 
 {% extends "base2.html" %}
-  
+{% block title %} {{publicacion.descripcion|truncatechars:15}} {% endblock %}
 
 {% block content %}
 {%load static%}
