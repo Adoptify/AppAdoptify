@@ -63,5 +63,10 @@ footer p {
 .contenedor {
 	background-size: cover;
 	background-repeat: no-repeat center center #ffffff;
+	min-height: 400px !important;
 	height: 100%;
+}
+.custom-btn-size {
+	height: 31px;
+	width: 100%;
 }

@@ -1,54 +1,74 @@
 
 {% extends "base2.html" %}
-{% block title %} {{publicacion.descripcion|truncatechars:15}} {% endblock %}
+{% block title %} {{publicacion.descripcion|truncatechars:25}} {% endblock %}
 
 {% block content %}
 {%load static%}
 <main role="main">
     <div class="album py-5 bg-lightgreen-adp">
         <div class="container">
-            <div class="row">
+            <div class="row no-gutters">
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-md-10 col-xl-8">
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
                         <div class="col-sm-12 col-md-6">
-                            <div class="contenedor" style="background-image: url({{publicacion.foto.url}}); background-repeat:none; background-position: center;">
+                            <div class="row contenedor" style="background-image: url({{publicacion.foto.url}}); background-repeat:none; background-position: center; min-height: 400px;">
+                                <div class="col-8 col-sm-9 col-md-7 col-lg-8"></div>
+                                <div class="col-4 col-sm-3 col-md-5 col-lg-4">
+                                    <img class="w-100 p-3" src="{% static 'assets/icons' %}/{{publicacion.especie.nombre|lower}}.png" alt="">
+                                    <p class="text-center bg-none">{{publicacion.raza}}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 bg-light">
+                        <div class="col-12 col-md-6 bg-light d-flex flex-column">
                             <div class="row no-gutters pt-4">
                                 <div class="col-1">
                                 </div>
                                 <div class="col-10">
                                     <small class="form-text text-muted mb-3">{{publicacion.fecha.date}}</small>
-                                    <p>{{publicacion.descripcion}}</p>
-                                    <p>Especie: {{publicacion.especie}}</p>
-                                    <p>Raza: {{publicacion.raza}}</p>
-                                        
-                                    <div class="row">
+                                    <p>{{publicacion.descripcion}}</p> 
+                                </div>
+                                <div class="col-1">
+                                </div>
+                            </div>
+                            <div class="row no-gutters mt-auto">
+                                <div class="col-1">
+                                </div>
+                                <div class="col-10">                                    
+                                    <div class="row no-gutters">
                                         <div class="col-4">
-                                            <a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!">
+                                            <a class="btn btn-sm btn-success col-12"
+                                                href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!">
                                                 <i class="fa fa-whatsapp whatsapp-icon" aria-hidden="true"></i>
-                                                Contactar
                                             </a>
                                         </div>
-                                        <div class="col-4"></div>
+                                        <div class="col-4">
+                                        </div>
                                         <div class="col-4">
                                             <form action="{% url 'reportar' publicacion.id %}" method="POST">
                                                 {% csrf_token %}
-                                                <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
+                                                <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-danger"/> 
                                             </form>
                                         </div>
                                     </div>
-                                    
                                 </div>
                                 <div class="col-1">
                                 </div>
                                 <div class="col-12 mt-4">
                                     <div class="row no-gutters">
-                                        <div class="col-md-4 text-center border p-2"><p class="text-primary m-0">{{publicacion.localidad}}</p></div>
-                                        <div class="col-md-4 text-center border p-2"><p class="text-primary m-0">{{publicacion.edad}} años</p></div>
-                                        <div class="col-md-4 text-center border p-2">
+                                        <div class="col-md-12 col-lg-4 text-center border p-2">
+                                            <p class="text-primary m-0">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                {{publicacion.localidad}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 text-center border p-2">
+                                            <p class="text-primary m-0">
+                                                <i class="fas fa-bone"></i>
+                                                {{publicacion.edad}} años
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 text-center border p-2">
                                             <p class="text-primary m-0">
                                                 {% if publicacion.sexo.nombre == "Hembra" %}
                                                     <i class="fas fa-venus"></i> Hembra
