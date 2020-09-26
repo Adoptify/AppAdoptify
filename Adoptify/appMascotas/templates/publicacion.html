@@ -16,33 +16,50 @@
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 bg-light">
-                            <div class="row no-gutters py-4">
+                            <div class="row no-gutters pt-4">
                                 <div class="col-1">
                                 </div>
                                 <div class="col-10">
-                                    <ul class="list-group list-group-flush">
-                                        <p>{{publicacion.fecha.date}}</p>
-                                        <p>{{publicacion.descripcion}}</p>
-                                        <p class="text-primary">{{publicacion.localidad}}</p>
-                                        <p>Edad: {{publicacion.edad}}</p>
-                                        <p>{{publicacion.especie}}</p>
-                                        {% if publicacion.sexo.nombre == "Hembra" %}
-                                            <i class="fas fa-venus"></i>
-                                        {% elif publicacion.sexo.nombre == "Macho" %}
-                                            <i class="fas fa-mars"></i>
-                                        {%else%}
-                                            <i class="fas fa-question"></i>
-                                        {% endif %}
-                                        <p>{{publicacion.raza}}</p>
-                                        <p><a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!
-                                            "><i class="fa fa-whatsapp whatsapp-icon" aria-hidden="true"></i> Contactar</a></p>
-                                        </ul>
-                                        <form action="{% url 'reportar' publicacion.id %}" method="POST">
-                                            {% csrf_token %}
-                                            <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
-                                        </form>
+                                    <small class="form-text text-muted mb-3">{{publicacion.fecha.date}}</small>
+                                    <p>{{publicacion.descripcion}}</p>
+                                    <p>Especie: {{publicacion.especie}}</p>
+                                    <p>Raza: {{publicacion.raza}}</p>
+                                        
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!">
+                                                <i class="fa fa-whatsapp whatsapp-icon" aria-hidden="true"></i>
+                                                Contactar
+                                            </a>
+                                        </div>
+                                        <div class="col-4"></div>
+                                        <div class="col-4">
+                                            <form action="{% url 'reportar' publicacion.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="col-1">
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4 text-center border p-2"><p class="text-primary m-0">{{publicacion.localidad}}</p></div>
+                                        <div class="col-md-4 text-center border p-2"><p class="text-primary m-0">{{publicacion.edad}} años</p></div>
+                                        <div class="col-md-4 text-center border p-2">
+                                            <p class="text-primary m-0">
+                                                {% if publicacion.sexo.nombre == "Hembra" %}
+                                                    <i class="fas fa-venus"></i> Hembra
+                                                {% elif publicacion.sexo.nombre == "Macho" %}
+                                                    <i class="fas fa-mars"></i> Macho
+                                                {%else%}
+                                                    <i class="fas fa-question"></i> Desconocido
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
