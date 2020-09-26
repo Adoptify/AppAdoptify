@@ -8,41 +8,47 @@
     <div class="album py-5 bg-lightgreen-adp">
         <div class="container">
             <div class="row">
-                <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
-          <div class="col-sm-12 col-md-6">
-              <div class="contenedor" style="background-image: url({{publicacion.foto.url}}); background-repeat:none; background-position: center;">
-                  <!-- <img src="{{publicacion.foto.url}}" alt=""> -->
-              </div>
-          </div>
-          <!-- <div class="col p-4 d-flex flex-column position-static"> -->
-          <div class="col-sm-12 col-md-6 bg-light">
-            <ul class="list-group list-group-flush">
-            <p>{{publicacion.fecha}}</p>
-            <p>{{publicacion.descripcion}}</p>
-              <p class="text-primary">{{publicacion.localidad}}</p>
-              <p>Edad: {{publicacion.edad}}</p>
-              <p>{{publicacion.especie}}</p>
-              {% if publicacion.sexo.nombre == "Hembra" %}
-                <i class="fas fa-venus"></i>
-              {% elif publicacion.sexo.nombre == "Macho" %}
-                <i class="fas fa-mars"></i>
-              {%else%}
-                <i class="fas fa-question"></i>
-              {% endif %}
-              <p>{{publicacion.raza}}</p>
-              <p><a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!
-                "><i class="fa fa-whatsapp whatsapp-icon" aria-hidden="true"></i> Contactar</a></p>
-            </ul>
-            <form action="{% url 'reportar' publicacion.id %}" method="POST">
-              {% csrf_token %}
-          <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
-          </form>
-          </div>
-          
-        </div>
-      </div>
+                <div class="col-md-1 col-xl-2"></div>
+                <div class="col-md-10 col-xl-8">
+                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="contenedor" style="background-image: url({{publicacion.foto.url}}); background-repeat:none; background-position: center;">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 bg-light">
+                            <div class="row no-gutters py-4">
+                                <div class="col-1">
+                                </div>
+                                <div class="col-10">
+                                    <ul class="list-group list-group-flush">
+                                        <p>{{publicacion.fecha.date}}</p>
+                                        <p>{{publicacion.descripcion}}</p>
+                                        <p class="text-primary">{{publicacion.localidad}}</p>
+                                        <p>Edad: {{publicacion.edad}}</p>
+                                        <p>{{publicacion.especie}}</p>
+                                        {% if publicacion.sexo.nombre == "Hembra" %}
+                                            <i class="fas fa-venus"></i>
+                                        {% elif publicacion.sexo.nombre == "Macho" %}
+                                            <i class="fas fa-mars"></i>
+                                        {%else%}
+                                            <i class="fas fa-question"></i>
+                                        {% endif %}
+                                        <p>{{publicacion.raza}}</p>
+                                        <p><a class="btn btn-sm btn-success" href="https://api.whatsapp.com/send?phone={{publicacion.telefono}}&text=Hola, me interesa adoptar tu mascota!
+                                            "><i class="fa fa-whatsapp whatsapp-icon" aria-hidden="true"></i> Contactar</a></p>
+                                        </ul>
+                                        <form action="{% url 'reportar' publicacion.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="submit" value="Denunciar"  class="btn btn-sm btn-outline-secondary"/> 
+                                        </form>
+                                </div>
+                                <div class="col-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-xl-2"></div>
             </div>
         </div>
     </div>
