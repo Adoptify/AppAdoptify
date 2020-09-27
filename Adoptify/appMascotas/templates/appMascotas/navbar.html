@@ -26,14 +26,26 @@
         </ul>
     <div class="collapse navbar-collapse" id="navbarsExample01">
       <form action="/" method="POST">
-        <p>Edades</p>
-        <select name="edadget">
-          <option value="">Seleccione</option>
-          {% for e in edad %}
-          <option value="{{e.edad}}">{{e.edad}}</option>
-          {% endfor %}
-        </select><br>
-        
+        <div>
+          <p>Edades</p>
+          <select name="edadget">
+            <option value="">Seleccione</option>
+            {% for e in edad %}
+            <option value="{{e.edad}}">{{e.edad}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
+        <div>
+          <p>Localidades</p>
+          <select name="localidadget">
+            <option value="">Seleccione</option>
+            {% for l in localidad %}
+            <option value="{{l.nombre}}">{{l.nombre}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" class="btn btn-success bg-dark-adp" value="Filtrar">
