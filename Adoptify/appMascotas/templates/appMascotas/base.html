@@ -13,18 +13,7 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-light bg-green-adp">
-            <a class="navbar-brand" href="{% url 'index' %}">Adoptify</a>
-            {% include 'appMascotas/navbar.html' %}
-          
-            <div class="collapse navbar-collapse" id="navbarsExample01">
-              <form method="POST" action="{% url 'filtrar' %}">
-                {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-success bg-dark-adp" value="Filtrar">
-              </form>
-            </div>
-          </nav>
+     {% block navbar %}{%endblock%}
     </header>
     {% block content %}{% endblock %}
     </body>

@@ -1,6 +1,10 @@
 {% extends "appMascotas/base.html" %}
   {% block title %} Crear publicacion {% endblock %}
-
+  {% block navbar %}
+  <header>
+    {% include 'appMascotas/navbar.html' %}
+  </header>
+  {%endblock%}
 {% block content %}
     <main role="main">
         <div class="album py-5 bg-lightgreen-adp">

@@ -1,6 +1,11 @@
 {% extends "appMascotas/base.html" %}
 {% load static %}
 {% block title %}Bienvenido a Adoptify{% endblock %}
+{% block navbar %}
+<header>
+  {% include 'appMascotas/navbar.html' with edad=edades %}
+</header>
+{%endblock%}
 {% block content %}
   <main role="main">
     <div class="album py-5 bg-lightgreen-adp">

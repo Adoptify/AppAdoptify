@@ -1,7 +1,11 @@
 
 {% extends "appMascotas/base.html" %}
 {% block title %} {{publicacion.descripcion|truncatechars:25}} {% endblock %}
-
+{% block navbar %}
+  <header>
+    {% include 'appMascotas/navbar.html' %}
+  </header>
+  {%endblock%}
 {% block content %}
 {%load static%}
 <main role="main">
