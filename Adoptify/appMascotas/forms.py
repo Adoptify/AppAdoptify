@@ -9,7 +9,7 @@ class PublicacionForm(ModelForm):
         fields = ['telefono', 'localidad',
                   'especie', 'raza', 'edad', 'sexo', 'descripcion', 'foto']
         widgets = {
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'id': 'descripcion', 'oninput': 'counter()', 'rows': '7'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control descripcion', 'rows': '7'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control'}),
             'localidad': forms.Select(attrs={'class': 'form-control'}),
             'especie': forms.Select(attrs={'class': 'form-control'}),

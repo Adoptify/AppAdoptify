@@ -58,8 +58,11 @@
                                 <div class="p-2 w-100 bd-highlight">
                                     <div class="form-group">
                                         <label for="{{form.descripcion.id_for_label}}">{{form.descripcion.html_name|capfirst}}</label>
-                                        {{form.descripcion}}
+                                        <textarea name="descripcion" id="descripcion" cols="10" rows="7" class="form-control" maxlength="300"></textarea>
                                         <small id="display" class="form-text text-muted"></small>
+                                      </div>
+                                      <div class="progress">
+                                        <div class="progress-bar progress-bar-striped bg-none" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                       </div>
                                 </div>
                               </div>
@@ -87,4 +90,6 @@
           </div>
         </div>
       </main>
+      {% load static %}
+      <script src="{% static 'js/script.js' %}"></script>
 {%endblock%}
