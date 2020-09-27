@@ -19,7 +19,8 @@ def index(request, pubsFiltradas=None):
     paginator = Paginator(publicaciones, 3)
     page = request.GET.get('page')
     publicaciones = paginator.get_page(page)
-    return render(request, 'index2.html', {'publicaciones': publicaciones, 'form': form})
+    context = {'publicaciones': publicaciones, 'form': form}
+    return render(request, 'appMascotas/index.html', context)
 
 
 def crear(request):
@@ -30,7 +31,8 @@ def crear(request):
             return redirect("index")
     else:
         form = PublicacionForm()
-        return render(request, 'nuevPu.html', {'form': form})
+        context = {'form': form}
+        return render(request, 'appMascotas/nuevPu.html', context)
 
 
 def publicacion(request, id):
@@ -38,10 +40,10 @@ def publicacion(request, id):
         publicacion = Publicacion.objects.get(pk=id)
     except Publicacion.DoesNotExist:
         raise Http404("La cuenta no existe")
-
+    context = {'publicacion': publicacion}
     return render(request,
-                  'publicacion.html',
-                  {'publicacion': publicacion})
+                  'appMascotas/publicacion.html',
+                  context)
 
 
 def filtrarPublicacion(request):
