@@ -1,8 +1,6 @@
 const descripcion = document.querySelector('#descripcion');
 const max = 300;
-let bar = document.querySelector('.progress-bar');
-bar.style.width = '0%';
-let progreso = 0;
+let display = document.querySelector('#display');
 descripcion.addEventListener('input', () => {
-	bar.style.width = `${descripcion.value.length * 100 / max}%`;
+	display.textContent = `${descripcion.value.length}/${max}`;
 });
