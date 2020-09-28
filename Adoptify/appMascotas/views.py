@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 
 def index(request):
-    filtro = Publicacion.objects.all()
+    allPubs = Publicacion.objects.all()
     Qe = Q()
     Ql = Q()
     Qs = Q()
@@ -31,11 +31,32 @@ def index(request):
         Qr = Q(raza__nombre=raza)
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
-    publicaciones = filtro.filter(Q1 & Q2 & Qe & Ql & Qs & Qes & Qr)
-    paginator = Paginator(publicaciones, 3)
+    pubsFiltradas = allPubs.filter(Q1 & Q2 & Qe & Ql & Qs & Qes & Qr)
+    cantPaginacion = 3
+    paginator = Paginator(pubsFiltradas, cantPaginacion)
     page = request.GET.get('page')
-    publicaciones = paginator.get_page(page)
-    context = {'publicaciones': publicaciones, 'edades':Edad.objects.all(), 'localidades':Localidad.objects.all(), 'sexos': Sexo.objects.all(), 'razas':Raza.objects.all(), 'especies':Especie.objects.all()}
+    pagActual = paginator.get_page(page)
+    # total de resultados obtenidos en la bd
+    total = len(allPubs)
+    contResActual = 0
+    for pagina in range(1, pagActual.number+1):
+        contResActual += cantPaginacion
+
+    contResActual -= cantPaginacion-1
+    totalActual = cantPaginacion * pagActual.number if cantPaginacion * \
+        pagActual.number < total else total
+    context = {
+        'publicaciones': pagActual,
+        'edades': Edad.objects.all(),
+        'localidades': Localidad.objects.all(),
+        'sexos': Sexo.objects.all(),
+        'razas': Raza.objects.all(),
+        'especies': Especie.objects.all(),
+        'totalActual': totalActual,
+        'total': total,
+        'cantPaginacion': cantPaginacion,
+        'contResActual': contResActual
+    }
     return render(request, 'appMascotas/index.html', context)
 
 

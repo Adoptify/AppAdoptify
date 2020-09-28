@@ -34,7 +34,7 @@
           <img src="{% static 'images/ptriste.jpg' %}" alt="">
           {% endif %}
         </div>
-        {% if publicaciones.paginator %}
+        {% if publicaciones.paginator.num_pages > 1 %}
           <ul class="list-group list-group-horizontal mt-2">
             {% if publicaciones.has_previous %}
               <a class="list-group-item shadow-sm" href="?page={{ publicaciones.previous_page_number }}">
@@ -62,8 +62,9 @@
               </a>
             {% endif %}
           </ul>
+          
         {% endif %}
-        
+        <p class="mt-3">Mostrando {{contResActual}} - {{totalActual}} de {{total}} </p>
       </div>
     </div>
   </main>
