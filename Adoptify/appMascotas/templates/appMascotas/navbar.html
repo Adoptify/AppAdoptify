@@ -2,8 +2,8 @@
 
   <nav class="navbar navbar-light bg-green-adp">
     <a class="navbar-brand" href="{% url 'index' %}">Adoptify</a>
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-      <ul class="list-group list-group-horizontal">
+      {% if mostrar %}
+        <ul class="list-group list-group-horizontal">
           <li
             class="list-group-item bg-none color-dark"
             data-toggle="collapse"
@@ -16,68 +16,65 @@
               <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
             </svg>
           </li>
-          <li class="list-group-item bg-none color-dark">
-            <a href="{% url 'crear' %}">
+            <a href="{% url 'crear' %}" class="list-group-item bg-none color-dark">
               <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="#343a40" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
               </svg>
             </a>
-          </li>
         </ul>
+      {% endif %}
     <div class="collapse navbar-collapse" id="navbarsExample01">
       <form action="/" method="POST">
-        <div>
-          <p>Edades</p>
-          <select name="edadget">
-            <option value="">Seleccione</option>
-            {% for e in edad %}
-            <option value="{{e.edad}}">{{e.edad}}</option>
-            {% endfor %}
-          </select>
+        <div class="row">
+          <div class="form-group col-md-6 col-lg-4">
+            <p>Edades</p>
+            <select name="edadget" class="form-control">
+              <option value="">Seleccione</option>
+              {% for e in edad %}
+              <option value="{{e.edad}}">{{e.edad}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group col-md-6 col-lg-4">
+            <p>Localidades</p>
+            <select name="localidadget" class="form-control">
+              <option value="">Seleccione</option>
+              {% for l in localidad %}
+              <option value="{{l.nombre}}">{{l.nombre}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group col-md-6 col-lg-4">
+            <p>Sexo</p>
+            <select name="sexoget" class="form-control">
+              <option value="">Seleccione</option>
+              {% for s in sexo %}
+              <option value="{{s.nombre}}">{{s.nombre}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group col-md-6 col-lg-4">
+            <p>Especie</p>
+            <select name="especieget" class="form-control">
+              <option value="">Seleccione</option>
+              {% for es in especie %}
+              <option value="{{es.nombre}}">{{es.nombre}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group col-md-12 col-lg-4">
+            <p>Raza</p>
+            <select name="razaget" class="form-control">
+              <option value="">Seleccione</option>
+              {% for r in raza %}
+              <option value="{{r.nombre}}">{{r.nombre}}</option>
+              {% endfor %}
+            </select>
+          </div>
+  
+          {% csrf_token %}
+          {{form.as_p}}
         </div>
-        <br>
-        <div>
-          <p>Localidades</p>
-          <select name="localidadget">
-            <option value="">Seleccione</option>
-            {% for l in localidad %}
-            <option value="{{l.nombre}}">{{l.nombre}}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <br>
-        <div>
-          <p>Sexo</p>
-          <select name="sexoget">
-            <option value="">Seleccione</option>
-            {% for s in sexo %}
-            <option value="{{s.nombre}}">{{s.nombre}}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <br>
-        <div>
-          <p>Especie</p>
-          <select name="especieget">
-            <option value="">Seleccione</option>
-            {% for es in especie %}
-            <option value="{{es.nombre}}">{{es.nombre}}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <br>
-        <div>
-          <p>Raza</p>
-          <select name="razaget">
-            <option value="">Seleccione</option>
-            {% for r in raza %}
-            <option value="{{r.nombre}}">{{r.nombre}}</option>
-            {% endfor %}
-          </select>
-        </div>
-
-        {% csrf_token %}
-        {{form.as_p}}
         <input type="submit" class="btn btn-success bg-dark-adp" value="Filtrar">
       </form>
     </div>

@@ -3,7 +3,7 @@
 {% block title %}Bienvenido a Adoptify{% endblock %}
 {% block navbar %}
 <header>
-  {% include 'appMascotas/navbar.html' with edad=edades localidad=localidades sexo=sexos raza=razas especie=especies %}
+  {% include 'appMascotas/navbar.html' with mostrar=True edad=edades localidad=localidades sexo=sexos raza=razas especie=especies %}
 </header>
 {%endblock%}
 {% block content %}
@@ -35,36 +35,38 @@
           {% endif %}
         </div>
         {% if publicaciones.paginator.num_pages > 1 %}
-          <ul class="list-group list-group-horizontal mt-2">
-            {% if publicaciones.has_previous %}
-              <a class="list-group-item shadow-sm" href="?page={{ publicaciones.previous_page_number }}">
-                Anterior
+        <ul class="list-group list-group-horizontal mt-2">
+          {% if publicaciones.has_previous %}
+            <a class="list-group-item shadow-sm" href="?page={{ publicaciones.previous_page_number }}">
+              Anterior
+            </a>
+          {% endif %}
+
+          {% for pagina in publicaciones.paginator.page_range %}
+            
+            {% if pagina == publicaciones.number %}
+              <p class="list-group-item shadow-sm bg-primary text-white m-0">
+                {{pagina}}
+              </p>
+            {% elif pagina > publicaciones.number|add:'-3' and pagina < publicaciones.number|add:'3' %}
+              <a class="list-group-item shadow-sm" href="?page={{ pagina }}">
+                {{pagina}}
               </a>
             {% endif %}
 
-            {% for pagina in publicaciones.paginator.page_range %}
-              
-              {% if pagina == publicaciones.number %}
-                <p class="list-group-item shadow-sm bg-primary text-white m-0">
-                  {{pagina}}
-                </p>
-              {% elif pagina > publicaciones.number|add:'-3' and pagina < publicaciones.number|add:'3' %}
-                <a class="list-group-item shadow-sm" href="?page={{ pagina }}">
-                  {{pagina}}
-                </a>
-              {% endif %}
+          {% endfor %}
 
-            {% endfor %}
-
-            {% if publicaciones.has_next %}
-              <a class="list-group-item shadow-sm" href="?page={{ publicaciones.next_page_number }}">
-                Siguiente
-              </a>
-            {% endif %}
-          </ul>
-          
-        {% endif %}
+          {% if publicaciones.has_next %}
+            <a class="list-group-item shadow-sm" href="?page={{ publicaciones.next_page_number }}">
+              Siguiente
+            </a>
+          {% endif %}
+        </ul>
+        
+      {% endif %}
+      {% if publicaciones %}
         <p class="mt-3">Mostrando {{contResActual}} - {{totalActual}} de {{total}} </p>
+      {% endif %}
       </div>
     </div>
   </main>
