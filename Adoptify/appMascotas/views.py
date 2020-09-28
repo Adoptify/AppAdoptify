@@ -19,7 +19,7 @@ def index(request):
     paginator = Paginator(publicaciones, 3)
     page = request.GET.get('page')
     publicaciones = paginator.get_page(page)
-    context = {'publicaciones': publicaciones, 'edades':Edad.objects.all()}
+    context = {'publicaciones': publicaciones, 'edades': Edad.objects.all()}
     return render(request, 'appMascotas/index.html', context)
 
 
