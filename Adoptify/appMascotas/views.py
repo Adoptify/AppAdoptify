@@ -10,16 +10,24 @@ from django.core.paginator import Paginator
 def index(request):
     filtro = Publicacion.objects.all()
     Qe = Q()
+    Ql = Q()
     if request.POST.get('edadget'):
-        edad = int(request.POST.get('edadget'))
-        Qe = Q(edad=edad)
+        edad = (request.POST.get('edadget'))
+        Qe = Q(edad__edad=edad)
+    if request.POST.get('localidadget'):
+        localidad = (request.POST.get('localidadget'))
+        Ql = Q(localidad__nombre=localidad)
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
-    publicaciones = filtro.filter(Q1 & Q2 & Qe)
+    publicaciones = filtro.filter(Q1 & Q2 & Qe & Ql)
     paginator = Paginator(publicaciones, 3)
     page = request.GET.get('page')
     publicaciones = paginator.get_page(page)
+<<<<<<< HEAD
     context = {'publicaciones': publicaciones, 'edades': Edad.objects.all()}
+=======
+    context = {'publicaciones': publicaciones, 'edades':Edad.objects.all(), 'localidades':Localidad.objects.all()}
+>>>>>>> 87efb7e55f9bc85a704e87a8494626d1a4d06d21
     return render(request, 'appMascotas/index.html', context)
 
 
