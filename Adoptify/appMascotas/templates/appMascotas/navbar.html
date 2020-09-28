@@ -46,6 +46,36 @@
           </select>
         </div>
         <br>
+        <div>
+          <p>Sexo</p>
+          <select name="sexoget">
+            <option value="">Seleccione</option>
+            {% for s in sexo %}
+            <option value="{{s.nombre}}">{{s.nombre}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
+        <div>
+          <p>Especie</p>
+          <select name="especieget">
+            <option value="">Seleccione</option>
+            {% for es in especie %}
+            <option value="{{es.nombre}}">{{es.nombre}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
+        <div>
+          <p>Raza</p>
+          <select name="razaget">
+            <option value="">Seleccione</option>
+            {% for r in raza %}
+            <option value="{{r.nombre}}">{{r.nombre}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" class="btn btn-success bg-dark-adp" value="Filtrar">

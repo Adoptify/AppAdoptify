@@ -11,19 +11,31 @@ def index(request):
     filtro = Publicacion.objects.all()
     Qe = Q()
     Ql = Q()
+    Qs = Q()
+    Qes = Q()
+    Qr = Q()
     if request.POST.get('edadget'):
         edad = (request.POST.get('edadget'))
         Qe = Q(edad__edad=edad)
     if request.POST.get('localidadget'):
         localidad = (request.POST.get('localidadget'))
         Ql = Q(localidad__nombre=localidad)
+    if request.POST.get('sexoget'):
+        sexo = (request.POST.get('sexoget'))
+        Qs = Q(sexo__nombre=sexo)
+    if request.POST.get('especieget'):
+        especie = (request.POST.get('especieget'))
+        Qes = Q(especie__nombre=especie)
+    if request.POST.get('razaget'):
+        raza = (request.POST.get('razaget'))
+        Qr = Q(raza__nombre=raza)
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
-    publicaciones = filtro.filter(Q1 & Q2 & Qe & Ql)
+    publicaciones = filtro.filter(Q1 & Q2 & Qe & Ql & Qs & Qes & Qr)
     paginator = Paginator(publicaciones, 3)
     page = request.GET.get('page')
     publicaciones = paginator.get_page(page)
-    context = {'publicaciones': publicaciones, 'edades':Edad.objects.all(), 'localidades':Localidad.objects.all()}
+    context = {'publicaciones': publicaciones, 'edades':Edad.objects.all(), 'localidades':Localidad.objects.all(), 'sexos': Sexo.objects.all(), 'razas':Raza.objects.all(), 'especies':Especie.objects.all()}
     return render(request, 'appMascotas/index.html', context)
 
 
