@@ -12,10 +12,10 @@ def index(request):
     Qe = Q()
     Ql = Q()
     if request.POST.get('edadget'):
-        edad = int(request.POST.get('edadget'))
-        Qe = Q(edad=edad)
+        edad = (request.POST.get('edadget'))
+        Qe = Q(edad__edad=edad)
     if request.POST.get('localidadget'):
-        localidad = str(request.POST.get('localidadget'))
+        localidad = (request.POST.get('localidadget'))
         Ql = Q(localidad__nombre=localidad)
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())

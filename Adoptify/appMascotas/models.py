@@ -16,7 +16,7 @@ class Localidad(models.Model):
 
 
 class Edad(models.Model):
-    edad = models.DecimalField(decimal_places=0, max_digits=3)
+    edad = models.CharField(max_length=15)
 
     def __str__(self):
         return "{}".format(self.edad)
