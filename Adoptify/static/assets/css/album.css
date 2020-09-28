@@ -1,74 +1,75 @@
 .jumbotron {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  margin-bottom: 0;
-  background-color: red;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	margin-bottom: 0;
+	background-color: red;
 }
 
-body, html{
-  height: 100vh;
-  
+body,
+html {
+	height: 100vh;
 }
 
-.hembra{
-  color: pink;
+.hembra {
+	color: pink;
 }
-.macho{
-  color: lightblue;
+.macho {
+	color: lightblue;
 }
 .wrapper {
-  min-height: calc(100% - 1rem);
+	min-height: calc(100% - 1rem);
 }
 
 .piedepagina {
-  
-  background-color: red
-  
+	background-color: red;
 }
 
-.barrasuperior{
-  background-color: #28df99;
+.barrasuperior {
+	background-color: #28df99;
 }
 
-.centenedor_barrasup{
-  background-color: #28df99;
+.centenedor_barrasup {
+	background-color: #28df99;
 }
 
-.contenedor_publicaciones{
-/*background-image: url(../media/images/patitafinalfinalfinal.png);*/
-background-color: #D2F6C5;
+.contenedor_publicaciones {
+	background-color: #d2f6c5;
 }
-.imagen{ height: 225px }
+.imagen {
+	height: 225px;
+}
 
 .piedepagina {
-  background-color: #28df99;
+	background-color: #28df99;
 }
 
-img{
-  width: 100%;
+img {
+	width: 100%;
 }
 
-a.navbar-brand { color: white }
+a.navbar-brand {
+	color: white;
+}
 
-a.nav-link { color: white }
-
+a.nav-link {
+	color: white;
+}
 
 @media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
+	.jumbotron {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
 }
 
 .jumbotron p:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .jumbotron h1 {
-  font-weight: 300;
+	font-weight: 300;
 }
 
 .jumbotron .container {
-  max-width: 40rem;
+	max-width: 40rem;
 }
-
