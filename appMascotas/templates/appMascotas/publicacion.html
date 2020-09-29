@@ -16,13 +16,13 @@
                 <div class="col-md-10 col-xl-8">
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
                         <div class="col-sm-12 col-md-6">
-                            <div class="row contenedor" style="background-image: url({{publicacion.foto.url}}); background-repeat:none; background-position: center; min-height: 400px;">
+                            <div class="row contenedor" style="background-image: url({{publicacion.foto.url}}); background-size: 100%;">
                                 <div class="col-8 col-sm-9 col-md-7 col-lg-8"></div>
-                                <div class="col-4 col-sm-3 col-md-5 col-lg-4">
+                                <div class="col-4 col-sm-3 col-md-5 col-lg-4 d-flex flex-column justify-content-end">
                                     {% with 'assets/icons/'|add:publicacion.especie.nombre|lower|add:'.png' as icono_especie %}
-                                        <img class="w-100 p-3" src="{% static icono_especie %}" alt="">
+                                        <img class="w-100 p-3 " src="{% static icono_especie %}" alt="">
                                     {% endwith %}
-                                    <p class="text-center bg-none">{{publicacion.raza}}</p>
+                                    <p class="text-center bg-none radius font-weight-bold">{{publicacion.estado}}</p>
                                 </div>
                             </div>
                         </div>

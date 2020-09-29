@@ -40,10 +40,9 @@ footer p {
 	cursor: pointer;
 }
 .contenedor {
-	background-size: cover;
-	background-repeat: no-repeat center center #ffffff;
-	min-height: 400px !important;
-	height: 100%;
+	background-repeat: none;
+	background-position: center;
+	min-height: 400px;
 }
 .custom-btn-size {
 	height: 31px;
@@ -73,4 +72,21 @@ footer p {
 .icono {
 	width: 40px;
 	height: 40px;
+}
+.foto {
+	width: 100%;
+	border-radius: .25rem .25rem 0 0;
+}
+.foto-container {
+	overflow: hidden;
+	height: 225px;
+}
+.foto-container:hover .foto {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	transition: all .5s ease-in-out;
+}
+
+.radius {
+	border-radius: 5px;
 }

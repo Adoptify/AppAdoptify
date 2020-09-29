@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 
 def index(request):
-    allPubs = Publicacion.objects.all()
+    allPubs = Publicacion.objects.all().order_by('fecha')
     Qe = Q()
     Ql = Q()
     Qs = Q()
@@ -26,9 +26,9 @@ def index(request):
     if request.POST.get('especieget'):
         especie = (request.POST.get('especieget'))
         Qes = Q(especie__nombre=especie)
-    if request.POST.get('razaget'):
-        raza = (request.POST.get('razaget'))
-        Qr = Q(raza__nombre=raza)
+    if request.POST.get('estadoget'):
+        estado = (request.POST.get('estadoget'))
+        Qr = Q(estado__nombre=estado)
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
     pubsFiltradas = allPubs.filter(Q1 & Q2 & Qe & Ql & Qs & Qes & Qr)
@@ -50,7 +50,7 @@ def index(request):
         'edades': Edad.objects.all(),
         'localidades': Localidad.objects.all(),
         'sexos': Sexo.objects.all(),
-        'razas': Raza.objects.all(),
+        'estados': Estado.objects.all(),
         'especies': Especie.objects.all(),
         'totalActual': totalActual,
         'total': total,

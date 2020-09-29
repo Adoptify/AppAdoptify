@@ -30,10 +30,10 @@ class Sexo(models.Model):
     def __str__(self):
         return self.nombre
 
-# clase para clasificar las razas de los animales
+# clase para clasificar las estado de los animales
 
 
-class Raza(models.Model):
+class Estado(models.Model):
     nombre = models.CharField(max_length=50)
 
     def __str__(self):
@@ -58,13 +58,11 @@ class Publicacion(models.Model):
         Localidad, default=1, on_delete=models.PROTECT)
     edad = models.ForeignKey(Edad, default=1, on_delete=models.PROTECT)
     especie = models.ForeignKey(Especie, default=1, on_delete=models.PROTECT)
-    raza = models.ForeignKey(Raza, default=1, on_delete=models.PROTECT)
+    estado = models.ForeignKey(Estado, default=1, on_delete=models.PROTECT)
     sexo = models.ForeignKey(Sexo, default=1, on_delete=models.PROTECT)
     report = models.DecimalField(max_digits=1, decimal_places=0, default=0)
     fechavence = models.DateField(
         default=datetime.now().date() + timedelta(days=7))
 
     def __str__(self):
-        return "Fecha:{} Descripcion:{} Telefono:{} Localidad: {} Edad:{} Especie: {} Raza:{} Sexo: {}".format(self.fecha, self.descripcion, self.telefono, self.localidad, self.edad, self.especie, self.raza, self.sexo)
-
-
+        return "Fecha:{} Descripcion:{} Telefono:{} Localidad: {} Edad:{} Especie: {} Estado:{} Sexo: {}".format(self.fecha, self.descripcion, self.telefono, self.localidad, self.edad, self.especie, self.estado, self.sexo)

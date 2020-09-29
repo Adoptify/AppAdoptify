@@ -2,28 +2,34 @@ from django.contrib import admin
 from appMascotas import models
 # Register your models here.
 
+
 class LocalidadAdmin(admin.ModelAdmin):
-	pass
+    pass
+
 
 class EdadAdmin(admin.ModelAdmin):
-	pass
-	
+    pass
+
+
 class SexoAdmin(admin.ModelAdmin):
-	pass
+    pass
 
-class RazaAdmin(admin.ModelAdmin):
-	pass
-	
+
+class EstadoAdmin(admin.ModelAdmin):
+    pass
+
+
 class EspecieAdmin(admin.ModelAdmin):
-	pass
-	
-class PublicacionAdmin(admin.ModelAdmin):
-	pass
-	
+    pass
 
-admin.site.register(models.Localidad,LocalidadAdmin)
-admin.site.register(models.Edad,EdadAdmin)
-admin.site.register(models.Sexo,SexoAdmin)
-admin.site.register(models.Raza,RazaAdmin)
-admin.site.register(models.Especie,EspecieAdmin)
-admin.site.register(models.Publicacion,PublicacionAdmin)
+
+class PublicacionAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(models.Localidad, LocalidadAdmin)
+admin.site.register(models.Edad, EdadAdmin)
+admin.site.register(models.Sexo, SexoAdmin)
+admin.site.register(models.Estado, EstadoAdmin)
+admin.site.register(models.Especie, EspecieAdmin)
+admin.site.register(models.Publicacion, PublicacionAdmin)
