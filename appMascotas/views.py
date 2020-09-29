@@ -32,12 +32,12 @@ def index(request):
     Q1 = Q(report__lt=3)
     Q2 = Q(fechavence__gt=datetime.now())
     pubsFiltradas = allPubs.filter(Q1 & Q2 & Qe & Ql & Qs & Qes & Qr)
-    cantPaginacion = 3
+    cantPaginacion = 6
     paginator = Paginator(pubsFiltradas, cantPaginacion)
     page = request.GET.get('page')
     pagActual = paginator.get_page(page)
     # total de resultados obtenidos en la bd
-    total = len(allPubs)
+    total = len(pubsFiltradas)
     contResActual = 0
     for pagina in range(1, pagActual.number+1):
         contResActual += cantPaginacion

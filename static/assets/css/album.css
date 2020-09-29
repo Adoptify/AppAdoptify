@@ -73,3 +73,14 @@ a.nav-link {
 .jumbotron .container {
 	max-width: 40rem;
 }
+
+.bg-primaro {
+	background-color: #007bff !important;
+  }
+  
+  a.bg-primaro:hover, a.bg-primaro:focus,
+  button.bg-primaro:hover,
+  button.bg-primaro:focus {
+	background-color: #0062cc !important;
+  }
+  
