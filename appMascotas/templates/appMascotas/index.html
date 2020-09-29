@@ -30,8 +30,10 @@
               </div>
             {% endfor %}
           {% else %}
-          <h1>No se encontraron publicaciones</h1>
-          <img src="{% static 'images/ptriste.jpg' %}" alt="">
+          <div>
+            <h1>No se encontraron publicaciones</h1>
+            <img src="{% static 'assets/icons/triste.svg' %}" alt="">
+          </div>
           {% endif %}
         </div>
         {% if publicaciones.paginator.num_pages > 1 %}

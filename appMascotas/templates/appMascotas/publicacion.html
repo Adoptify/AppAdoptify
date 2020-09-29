@@ -19,7 +19,9 @@
                             <div class="row contenedor" style="background-image: url({{publicacion.foto.url}}); background-repeat:none; background-position: center; min-height: 400px;">
                                 <div class="col-8 col-sm-9 col-md-7 col-lg-8"></div>
                                 <div class="col-4 col-sm-3 col-md-5 col-lg-4">
-                                    <img class="w-100 p-3" src="{% static 'assets/icons' %}/{{publicacion.especie.nombre|lower}}.png" alt="">
+                                    {% with 'assets/icons/'|add:publicacion.especie.nombre|lower|add:'.png' as icono_especie %}
+                                        <img class="w-100 p-3" src="{% static icono_especie %}" alt="">
+                                    {% endwith %}
                                     <p class="text-center bg-none">{{publicacion.raza}}</p>
                                 </div>
                             </div>
