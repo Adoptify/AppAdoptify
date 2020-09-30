@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 
 def index(request):
-    allPubs = Publicacion.objects.all().order_by('fecha')
+    allPubs = Publicacion.objects.all().order_by('-fecha')
     Qe = Q()
     Ql = Q()
     Qs = Q()
@@ -73,6 +73,7 @@ def crear(request):
 
 
 def publicacion(request, id):
+    print('REFERER IS:', request.META.get('HTTP_REFERER'))
     try:
         publicacion = Publicacion.objects.get(pk=id)
     except Publicacion.DoesNotExist:

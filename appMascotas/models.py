@@ -50,7 +50,7 @@ class Especie(models.Model):
 
 
 class Publicacion(models.Model):
-    fecha = models.DateTimeField(auto_now=True)
+    fecha = models.DateTimeField(default=datetime.now().date())
     descripcion = models.CharField(max_length=300, default='')
     foto = models.ImageField(upload_to='images/')
     telefono = models.DecimalField(max_digits=15, decimal_places=0)
