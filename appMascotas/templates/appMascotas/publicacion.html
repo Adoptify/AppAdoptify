@@ -16,7 +16,7 @@
                 <div class="col-md-10 col-xl-8">
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
                         <div class="col-sm-12 col-md-6">
-                            <div class="row contenedor" style="background-image: url({{publicacion.foto.url}}); background-size: 100%;">
+                            <div class="row contenedor" style="background-image: url({{publicacion.foto.url}}); background-size: 80%; background-repeat: no-repeat;">
                                 <div class="col-8 col-sm-9 col-md-7 col-lg-8"></div>
                                 <div class="col-4 col-sm-3 col-md-5 col-lg-4 d-flex flex-column justify-content-end">
                                     {% with 'assets/icons/'|add:publicacion.especie.nombre|lower|add:'.png' as icono_especie %}
@@ -63,19 +63,19 @@
                                 <div class="col-12 mt-4">
                                     <div class="row no-gutters">
                                         <div class="col-md-12 col-lg-4 text-center border p-2 d-flex align-items-center justify-content-center">
-                                            <p class="text-primary m-0">
+                                            <p class="text-primary text-green m-0">
                                                 <i class="fas fa-map-marker-alt"></i>
                                                 {{publicacion.localidad}}
                                             </p>
                                         </div>
                                         <div class="col-md-6 col-lg-4 text-center border p-2 d-flex align-items-center justify-content-center">
-                                            <p class="text-primary m-0">
+                                            <p class="text-primary text-green m-0">
                                                 <i class="fas fa-bone"></i>
                                                 {{publicacion.edad}} años
                                             </p>
                                         </div>
                                         <div class="col-md-6 col-lg-4 text-center border p-2 d-flex align-items-center justify-content-center">
-                                            <p class="text-primary m-0">
+                                            <p class="text-primary text-green m-0">
                                                 {% if publicacion.sexo.nombre == "Hembra" %}
                                                     <i class="fas fa-venus"></i> Hembra
                                                 {% elif publicacion.sexo.nombre == "Macho" %}
@@ -94,7 +94,7 @@
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-md-10 col-xl-8">
-                    <button class="btn btn-info" onclick="goBack()">
+                    <button class="btn btn-info bg-primario " onclick="goBack()">
                         Volver
                     </button>
                 </div>

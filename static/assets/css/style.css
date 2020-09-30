@@ -40,9 +40,11 @@ footer p {
 	cursor: pointer;
 }
 .contenedor {
-	background-repeat: none;
+	/* background-repeat: none; */
+	background-color: white;
 	background-position: center;
 	min-height: 400px;
+
 }
 .custom-btn-size {
 	height: 31px;
@@ -51,16 +53,21 @@ footer p {
 
 .bton:hover {
 	text-decoration: none;
-	background-color: green;
+	background-color: #17b87a;
 	border-color: white;
 }
 
 .bg-primario {
-	background-color: green !important;
+	background-color: #17b87a !important;
 }
 
 .text-black {
 	color: black !important;
+}
+	
+
+.text-green {
+	color: #0f9260 !important;
 }
 
 .jumbotrn {
@@ -77,10 +84,23 @@ footer p {
 	width: 100%;
 	border-radius: .25rem .25rem 0 0;
 }
-.foto-container {
+.foto-container { 
+	
 	overflow: hidden;
-	height: 225px;
+/*	height: 225px; */
+	width: 100%;
+	height: auto;
 }
+
+@supports(object-fit: cover){
+    .foto-container img{
+      height: 225px;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+
+
 .foto-container:hover .foto {
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
@@ -90,3 +110,12 @@ footer p {
 .radius {
 	border-radius: 5px;
 }
+
+.text-detalles{
+	color: rgb(138, 23, 184);
+	text-shadow: 1px 1px rgb(0, 0, 0);
+	font-family: 'Helvetica', cursive;
+  	
+}
+
+
