@@ -2,9 +2,11 @@
   
   <nav class="navbar navbar-light bg-green-adp">
     <div class="container-md "> 
-    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'assets/icons/logo_patita_sola_.png' %}" width="60" height="60" /></a>
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'assets/icons/logo_patita_sola_.png' %}" width="60" height="60" style="margin:0 auto;" /></a>
+      
     
      <a class="navbar-brand d-none d-md-block" href="{% url 'index' %}"><img src="{% static 'assets/icons/adoptify.png' %}" width="180" height="60" /></a> 
+     
 
 
       {% if mostrar %}
